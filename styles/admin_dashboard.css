@@ -1,0 +1,145 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ecd9ba;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #dd5701;
+}
+
+.menu-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #dd5701;
+    padding: 10px 20px;
+}
+
+.menu-bar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.menu-bar a:hover {
+    background-color: #34495e;
+}
+
+form {
+    text-align: center;
+    margin: 20px 0;
+}
+
+input[type="text"], select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:hover, select:hover {
+    border-color: #5bb656;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #5bb656;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #29b948;
+    transform: scale(1.05);
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.article-item {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.article-item:hover {
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.article-item h2 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+    color: #dd5701;
+}
+
+.article-item p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.article-item a {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.article-item a:hover {
+    color: #c0392b;
+}
+
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    color: #5bb656;
+    padding: 10px 15px;
+    margin: 0 5px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #5bb656;
+    color: white;
+}
+
+.pagination a.active {
+    background-color: #dd5701;
+    color: white;
+    border-color: #dd5701;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #dd5701;
+    color: white;
+}

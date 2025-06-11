@@ -1,0 +1,151 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 2.5rem;
+    color: #dd5701;
+}
+
+.menu-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #dd5701;
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-bar a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+}
+
+.menu-bar a:hover {
+    background-color: #34495e;
+}
+
+form {
+    margin: 20px auto;
+    text-align: center;
+}
+
+select, input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+select:hover, input[type="text"]:hover {
+    border-color: #27ae60;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #2ecc71;
+    transform: scale(1.05);
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 30px auto;
+    padding: 0 30px;
+}
+
+.article-item {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.article-item:hover {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.article-item h2 {
+    margin: 0 0 10px;
+    font-size: 1.8rem;
+    color: #34495e;
+}
+
+.article-item p {
+    margin: 10px 0;
+    color: #666;
+    font-size: 1rem;
+}
+
+.article-item a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #29b948;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.article-item a:hover {
+    color: #5bb656;
+}
+
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    color: #5bb656;
+    padding: 10px 15px;
+    margin: 0 5px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #5bb656;
+    color: white;
+}
+
+.pagination a.active {
+    background-color: #dd5701;
+    color: white;
+    border-color: #dd5701;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #dd5701;
+    color: white;
+}
