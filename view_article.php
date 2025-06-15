@@ -2,6 +2,30 @@
 require 'connect.php'; 
 session_start();
 
+// Generate CAPTCHA Images for the comment submission form
+// This function generates a random 4-digit number and creates an image with it
+function generateCaptcha() {
+    $captcha_code = rand(1000, 9999); // Random 4-digit number
+    $_SESSION['captcha'] = $captcha_code; // we store captcha in session
+
+    // Create an image. 
+    //!! we need to make sure gd module is loaded in php.ini and gd dll is also loaded
+    $image = imagecreate(120, 40); // We set the size of the image here -  Width: 120px, Height: 40px
+    $background_color = imagecolorallocate($image, 255, 255, 255); // set image to white background since RGB colours are input here
+    $text_color = imagecolorallocate($image, 0, 0, 0); // black text
+    $font_size = 5;
+    imagestring($image, $font_size, 35, 10, $captcha_code, $text_color); // Add the code to the image
+
+    header("Content-Type: image/png");
+    imagepng($image);
+    imagedestroy($image); // Free up memory
+    exit();
+}
+
+// Generate  and show CAPTCHA image if requested
+if (isset($_GET['captcha'])) {
+    generateCaptcha();
+}
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_role'])) {
