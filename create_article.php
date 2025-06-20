@@ -95,45 +95,199 @@ handleFormSubmission($pdo);
             }
         });
     </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #ecd9ba;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #5bb656;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #29b948;
+        }
+
+        .back-button::before {
+            content: "← ";
+            margin-right: 5px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="file"],
+        select,
+        textarea {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #5bb656;
+        }
+
+        select {
+            background-color: white;
+            cursor: pointer;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            align-self: center;
+            margin-top: 20px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #27ae60;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+            }
+            
+            .container {
+                margin: 10px;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Create a New Movie</h1>
-    
-    <!-- HTML Form to Create New Movie -->
-    <form action="create_article.php" method="POST" enctype="multipart/form-data">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required><br><br>
+    <div class="container">
+        <a href="javascript:history.back()" class="back-button">Back</a>
+        <h1>Create a New Movie</h1>
+        
+        <!-- HTML Form to Create New Movie -->
+        <form action="create_article.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
 
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" ></textarea><br><br>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description"></textarea>
+            </div>
 
-        <label for="release_year">Release Year:</label>
-        <input type="number" id="release_year" name="release_year" min="1900" max="2100" required><br><br>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="release_year">Release Year:</label>
+                    <input type="number" id="release_year" name="release_year" min="1900" max="2100" required>
+                </div>
 
-        <label for="category_id">Category (Genre):</label>
-        <select id="category_id" name="category_id" required>
-            <option value="">Select a Category</option>
-            <?php foreach ($categories as $category): ?>
-                <option value="<?php echo $category['id']; ?>">
-                    <?php echo htmlspecialchars($category['name']); ?>
-                </option>
-            <?php endforeach; ?>
-        </select><br><br>
+                <div class="form-group">
+                    <label for="duration">Duration (minutes):</label>
+                    <input type="number" id="duration" name="duration" min="1" required>
+                </div>
+            </div>
 
-        <label for="duration">Duration (minutes):</label>
-        <input type="number" id="duration" name="duration" min="1" required><br><br>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="category_id">Category (Genre):</label>
+                    <select id="category_id" name="category_id" required>
+                        <option value="">Select a Category</option>
+                        <?php foreach ($categories as $category): ?>
+                            <option value="<?php echo $category['id']; ?>">
+                                <?php echo htmlspecialchars($category['name']); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
 
-        <label for="director">Director:</label>
-        <input type="text" id="director" name="director"><br><br>
+                <div class="form-group">
+                    <label for="rating">Rating (0-10):</label>
+                    <input type="number" id="rating" name="rating" min="0" max="10" step="0.1">
+                </div>
+            </div>
 
-        <label for="rating">Rating (0-10):</label>
-        <input type="number" id="rating" name="rating" min="0" max="10" step="0.1"><br><br>
+            <div class="form-group">
+                <label for="director">Director:</label>
+                <input type="text" id="director" name="director">
+            </div>
 
-        <label for="image">Upload Movie Poster (optional):</label>
-        <input type="file" id="image" name="image" accept="image/*"><br><br>
+            <div class="form-group">
+                <label for="image">Upload Movie Poster (optional):</label>
+                <input type="file" id="image" name="image" accept="image/*">
+            </div><br><br>
         <!-- take any type of image as inpout (png, jpg etc) -->
 
-        <button type="submit">Create Movie</button>
-    </form>
+            <button type="submit">Create Movie</button>
+        </form>
+    </div>
 </body>
 </html>
