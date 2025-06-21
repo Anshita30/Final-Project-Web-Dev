@@ -34,7 +34,7 @@ if (!isset($_SESSION['user_role'])) {
 
 // Fetch the article details based on the article ID
 $article_id = intval($_GET['id']); // use int value of id
-$stmt = $pdo->prepare("SELECT * FROM Anime WHERE id = :id");
+$stmt = $pdo->prepare("SELECT * FROM movies WHERE id = :id");
 $stmt->execute([':id' => $article_id]);
 $article = $stmt->fetch();
 
@@ -47,10 +47,10 @@ $comments_stmt = $pdo->prepare("
     SELECT comments.id, comments.content, comments.status, users.username, comments.created_at 
     FROM comments
     JOIN users ON comments.user_id = users.id
-    WHERE comments.anime_id = :anime_id
+    WHERE comments.movie_id = :movie_id
     ORDER BY comments.created_at DESC
 ");
-$comments_stmt->execute([':anime_id' => $article_id]);
+$comments_stmt->execute([':movie_id' => $article_id]);
 $comments = $comments_stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Handle comment submission non-admin users
@@ -68,13 +68,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
             try {
                 // Insert new comment into the comments table
                 $insert_stmt = $pdo->prepare("
-                    INSERT INTO comments (content, status, user_id, anime_id) 
-                    VALUES (:content, 'visible', :user_id, :anime_id)
+                    INSERT INTO comments (content, status, user_id, movie_id) 
+                    VALUES (:content, 'visible', :user_id, :movie_id)
                 ");
                 $insert_stmt->execute([
                     ':content' => $comment_content,
                     ':user_id' => $_SESSION['user_id'],
-                    ':anime_id' => $article_id
+                    ':movie_id' => $article_id
                 ]);
                 echo "Comment added successfully.";
             } catch (PDOException $e) {
@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['user_role'] === 'admin')
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($article['title']); ?> - Movie Max</title>
+    <title><?php echo htmlspecialchars($article['title']); ?> - movies Max</title>
     <style>
         body {
             font-family: Arial, sans-serif;
