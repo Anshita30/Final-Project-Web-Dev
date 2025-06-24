@@ -97,7 +97,7 @@ handleFormSubmission($pdo);
     </script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Roboto, sans-serif;
             margin: 0;
             padding: 20px;
             background-color: #ecd9ba;

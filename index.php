@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
     <title>Movie Vault - Login & Sign Up</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Roboto, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #ecd9ba;

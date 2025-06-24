@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['save_user'])) {
     <link rel="stylesheet" href="styles/admin_dashboard.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Roboto, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #ecd9ba;

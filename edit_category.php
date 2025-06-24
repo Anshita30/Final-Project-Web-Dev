@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create'])) {
     <title>Edit categories/Genres - Movie Max</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Roboto, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f0f8ff;
